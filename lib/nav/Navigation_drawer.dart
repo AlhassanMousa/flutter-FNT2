@@ -57,7 +57,7 @@ class NavigationDrawer extends StatelessWidget {
       case 1:
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
-          return News();
+          return NewsScreen();
         }));
         break;
     }
