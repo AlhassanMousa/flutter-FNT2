@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_application_3/screens/signin.dart';
+import 'package:flutter_application_3/screens/login_page.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class SplashscreenState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-      return Signin();
+      return LoginScreen();
     }));
   }
 
@@ -44,7 +44,7 @@ class SplashscreenState extends State<SplashScreen> {
           SizedBox(
             height: 10,
           ),
-          Text("Blood Donation App")
+          Text("Test takweed App")
         ],
       ),
     )));

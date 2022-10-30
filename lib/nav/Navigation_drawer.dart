@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/news.dart';
-import 'package:flutter_application_3/screens/signin.dart';
+import 'package:flutter_application_3/screens/login_page.dart';
 import 'package:flutter_application_3/nav/drawer_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -51,7 +51,7 @@ class NavigationDrawer extends StatelessWidget {
       case 0:
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
-          return Signin();
+          return LoginScreen();
         }));
         break;
       case 1:

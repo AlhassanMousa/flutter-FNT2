@@ -38,7 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie: ^1.4.3
   equatable: ^2.0.3
- 
+  api_cache_manager:
+  http: any
+  snippet_coder_utils: ^1.0.12
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

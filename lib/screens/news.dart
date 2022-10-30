@@ -5,7 +5,6 @@ import 'package:flutter_application_3/components/image_container.dart';
 
 class NewsScreen extends StatelessWidget {
   const NewsScreen({Key? key}) : super(key: key);
-
 /* 
 final List<String> tabs; 
 @override 
@@ -15,9 +14,7 @@ class _TopScreen extends StatelessWidget {
 const _TopScreen({ 
 Key? key }) : super(key: key); 
 class _NewsState extends State<News> { 
-
 */
-
   @override
   Widget build(BuildContext context) {
     List<String> tabs = ['Health', 'Politics', 'Art', 'Food', 'Science'];
