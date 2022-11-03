@@ -1,25 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/screens/news.dart';
 import 'package:flutter_application_3/screens/splash_screen.dart';
 import 'package:flutter_application_3/nav/Navigation_drawer.dart';
+import 'package:flutter_application_3/localStorage.dart';
+import 'package:flutter_application_3/screens/login_page.dart';
 
 void main() {
   runApp(const MaterialApp(home: SplashScreen()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
+
+  bool isLoggedIn = false;
+
+  MyAppState() {
+    MySharedPreferences.instance
+        .getBooleanValue("loggedin")
+        .then((value) => setState(() {
+              isLoggedIn = value;
+            }));
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavigationDrawer(),
+      drawer: NavigationDrawer(),
       body: Builder(builder: (context) {
-        return Center(
-            child: SizedBox(
-          height: 50,
-          width: MediaQuery.of(context).size.width - 100,
-        ));
+        return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            home: isLoggedIn ? NewsScreen() : LoginScreen());
       }),
     );
   }

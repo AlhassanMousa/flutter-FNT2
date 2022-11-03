@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/news.dart';
 import 'package:flutter_application_3/screens/login_page.dart';
 import 'package:flutter_application_3/nav/drawer_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
-class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({Key? key}) : super(key: key);
+class NavigationDrawer extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return Navigation();
+  }
+}
+
+class Navigation extends State<NavigationDrawer> {
+  Future<String?> asyncFunc() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? nom = prefs.getString('name');
+    return nom;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +59,9 @@ class NavigationDrawer extends StatelessWidget {
 
   void onItemPressed(BuildContext context, {required int index}) {
     Navigator.pop(context);
+    print(asyncFunc());
+    print('bb${asyncFunc()}');
+    // print('here${MySharedPreferences.getStringValue('username')}');
 
     switch (index) {
       case 0:
@@ -78,8 +94,7 @@ class NavigationDrawer extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text('Alhassan Mousa',
-                style: TextStyle(fontSize: 15, color: Colors.white)),
+            Text("Hello ", style: TextStyle(fontSize: 15, color: Colors.white)),
             SizedBox(
               height: 10,
             ),

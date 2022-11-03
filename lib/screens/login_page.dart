@@ -3,6 +3,8 @@ import 'package:flutter_application_3/nav/Navigation_drawer.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -12,14 +14,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _SigninState extends State<LoginScreen> {
-  TextEditingController phone = TextEditingController();
+  TextEditingController phoneNum = TextEditingController();
   TextEditingController password = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
-        drawer: const NavigationDrawer(),
+        drawer: NavigationDrawer(),
         appBar: AppBar(
           title: Text("Sign In Screen"),
           centerTitle: true,
@@ -57,7 +58,7 @@ class _SigninState extends State<LoginScreen> {
                     child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: TextField(
-                          controller: phone,
+                          controller: phoneNum,
                           decoration: InputDecoration(
                               border: InputBorder.none, hintText: 'رقم الهاتف'),
                         )),
@@ -126,8 +127,10 @@ class _SigninState extends State<LoginScreen> {
 
   void loginUser() async {
     var url = "https://us-central1-takweed-eg.cloudfunctions.net/auth/login/";
+    final prefs = await SharedPreferences.getInstance();
+
     var values = {
-      "phone": '+2${phone.text}',
+      "phone": '+2${phoneNum.text}',
       "password": password.text,
     };
     print('here is response >>  ${values}');
@@ -136,17 +139,25 @@ class _SigninState extends State<LoginScreen> {
     Response response = await http.post(
       urlParser,
       body: json.encode(values),
+
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'otptoken': 'TakweedFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ',
       },
+      //    localStorage.setString('Name', response);
     );
-    print('here is response >>  ${response.body}');
+    var respo = json.decode(response.body);
+    var name = respo['data']['name'];
+    var myNum = respo['data']['phone'];
+    print('here ><< ${name}');
+
+    //  MySharedPreferences.instance.setStringValue("username", name);
+    await prefs.setString('name', name);
+
+//   localStorage.setString('name', respo['data']['name']);
+//   print('here ><< ${localStorage.getString('name')}');
   }
 }
-
-
-
 
 
 
@@ -228,5 +239,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
+
+ */
+
+
+/*
+
+  print('here is response >>  ${response.body}');
+    _read() async {
+      final prefs = await SharedPreferences.getInstance();
+      final Name = 'myName';
+      final value = prefs.getInt(response.body) ?? 0;
+      print('read: $value');
+    }
+
+    _save() async {
+      final prefs = await SharedPreferences.getInstance();
+      final key = 'my_int_key';
+      final value = 42;
+      prefs.setInt(key, value);
+      print('saved $value');
+    }
 
  */

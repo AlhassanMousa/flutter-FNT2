@@ -23,7 +23,7 @@ class _NewsState extends State<News> {
       initialIndex: 0,
       length: tabs.length,
       child: Scaffold(
-        drawer: const NavigationDrawer(),
+        drawer: NavigationDrawer(),
         appBar: AppBar(
           title: Text("Sign In Screen"),
           centerTitle: true,

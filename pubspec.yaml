@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^2.0.15
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,11 +39,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie: ^1.4.3
   equatable: ^2.0.3
-  api_cache_manager:
   http: any
-  snippet_coder_utils: ^1.0.12
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  localstorage: any
+
 
 dev_dependencies:
+  hive_generator: ^1.1.0
+  build_runner: ^2.1.1
   flutter_test:
     sdk: flutter
 
