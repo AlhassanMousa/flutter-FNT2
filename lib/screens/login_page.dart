@@ -131,7 +131,7 @@ class _SigninState extends State<LoginScreen> {
 
   void loginUser() async {
     Dialogs.showLoadingDialog(context, _keyLoader); //invoking login
-    var url = "https://us-central1-takweed-eg.cloudfunctions.net/auth/login/";
+    var url = "";
     final prefs = await SharedPreferences.getInstance();
 
     var values = {
@@ -145,8 +145,8 @@ class _SigninState extends State<LoginScreen> {
       body: json.encode(values),
 
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'otptoken': 'TakweedFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ',
+        'Content-Type': '',
+        'otptoken': '',
       },
       //    localStorage.setString('Name', response);
     );
