@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 var articles;
 Future<List> fetchAlbum() async {
   final response = await http.get(Uri.parse(
-      'https://us-central1-takweed-eg.cloudfunctions.net/client/posts'));
+      ''));
   if (response.statusCode == 200) {
     // print(json.decode(response.body)['data']);
     print('ll${json.decode(response.body)['data']}');
